@@ -111,45 +111,45 @@
 # Private: Private members are indicated by a double underscore (__) prefix. 
 # These are "name-mangled" to prevent direct access from outside the class, though they can still be accessed indirectly.
 
-class Sample:
-    def __init__(self):
-        self.public_var = "I am Public"  # Public variable
-        self._protected_var = "I am Protected"  # Protected variable
-        self.__private_var = "I am Private"  # Private variable
+# class Sample:
+#     def __init__(self):
+#         self.public_var = "I am Public"  # Public variable
+#         self._protected_var = "I am Protected"  # Protected variable
+#         self.__private_var = "I am Private"  # Private variable
 
-    def public_method(self):
-        print("This is a Public method")
+#     def public_method(self):
+#         print("This is a Public method")
 
-    def _protected_method(self):
-        print("This is a Protected method")
+#     def _protected_method(self):
+#         print("This is a Protected method")
 
-    def __private_method(self):
-        print("This is a Private method")
+#     def __private_method(self):
+#         print("This is a Private method")
 
-    def access_private_method(self):
-        # Accessing private method from within the class
-        self.__private_method()
+#     def access_private_method(self):
+#         # Accessing private method from within the class
+#         self.__private_method()
 
-# Create an object of the Sample class
-obj = Sample()
+# # Create an object of the Sample class
+# obj = Sample()
 
-# Accessing public members
-print(obj.public_var)  # Output: I am Public
-obj.public_method()    # Output: This is a Public method
+# # Accessing public members
+# print(obj.public_var)  # Output: I am Public
+# obj.public_method()    # Output: This is a Public method
 
-# Accessing protected members (can be accessed, but not recommended)
-print(obj._protected_var)  # Output: I am Protected
-obj._protected_method()    # Output: This is a Protected method
+# # Accessing protected members (can be accessed, but not recommended)
+# print(obj._protected_var)  # Output: I am Protected
+# obj._protected_method()    # Output: This is a Protected method
 
-# Accessing private members (will cause an AttributeError if accessed directly)
-# print(obj.__private_var)  # This will raise an AttributeError
+# # Accessing private members (will cause an AttributeError if accessed directly)
+# # print(obj.__private_var)  # This will raise an AttributeError
 
-# Access private member through name mangling (though not recommended)
-print(obj._Sample__private_var)  # Output: I am Private
-obj._Sample__private_method()    # Output: This is a Private method
+# # Access private member through name mangling (though not recommended)
+# print(obj._Sample__private_var)  # Output: I am Private
+# obj._Sample__private_method()    # Output: This is a Private method
 
-# Accessing private members through a public method
-obj.access_private_method()  # Output: This is a Private method
+# # Accessing private members through a public method
+# obj.access_private_method()  # Output: This is a Private method
 
 # ------- ------ Key Points: --------------------------------
 # Public members (like public_var) can be accessed from anywhere.
@@ -162,3 +162,118 @@ obj.access_private_method()  # Output: This is a Private method
 
 # ----- Inheritance in Python --------------------------------
 
+# 1. Single Inheritance - A child class inherits from one parent class.
+
+
+# Parent class
+class Animal:
+    def sound(self):
+        print("Animal makes a sound")
+
+# Child class (single inheritance)
+class Dog(Animal):
+    def sound(self):
+        print("Dog barks")
+
+# Create object of Dog class
+dog = Dog()
+dog.sound()  # Output: Dog barks
+
+
+# 2. Multiple Inheritance - > A child class inherits from more than one parent class.
+
+# Parent class 1
+class Father:
+    def skill(self):
+        print("Father's skill: Driving")
+
+# Parent class 2
+class Mother:
+    def skill(self):
+        print("Mother's skill: Cooking")
+
+# Child class (multiple inheritance)
+class Child(Father, Mother):
+    def skill(self):
+        print("Child's skill: Painting")
+
+# Create object of Child class
+child = Child()
+child.skill()      # Output: Child's skill: Painting
+
+
+# 3. Multilevel Inheritance - > A class inherits from a parent class, and another class inherits from the child class, forming a chain.
+
+# Base class
+class Animal:
+    def sound(self):
+        print("Animal makes a sound")
+
+# Intermediate class
+class Dog(Animal):
+    def bark(self):
+        print("Dog barks")
+
+# Derived class (multilevel inheritance)
+class Puppy(Dog):
+    def play(self):
+        print("Puppy plays")
+
+# Create object of Puppy class
+puppy = Puppy()
+puppy.sound()  # Output: Animal makes a sound
+puppy.bark()   # Output: Dog barks
+puppy.play()   # Output: Puppy plays
+
+
+# 4. Hierarchical Inheritance -> Multiple child classes inherit from the same parent class.
+
+# Parent class
+class Animal:
+    def sound(self):
+        print("Animal makes a sound")
+
+# Child class 1
+class Dog(Animal):
+    def sound(self):
+        print("Dog barks")
+
+# Child class 2
+class Cat(Animal):
+    def sound(self):
+        print("Cat meows")
+
+# Create objects of child classes
+dog = Dog()
+cat = Cat()
+
+dog.sound()  # Output: Dog barks
+cat.sound()  # Output: Cat meows
+
+
+# 5. Hybrid Inheritance -> A combination of multiple and multilevel inheritance.
+
+
+# Base class
+class Animal:
+    def sound(self):
+        print("Animal makes a sound")
+
+# Derived class 1
+class Dog(Animal):
+    def sound(self):
+        print("Dog barks")
+
+# Derived class 2
+class Cat(Animal):
+    def sound(self):
+        print("Cat meows")
+
+# Derived class 3 (hybrid inheritance)
+class Puppy(Dog, Cat):
+    def sound(self):
+        print("Puppy makes a cute sound")
+
+# Create object of Puppy class
+puppy = Puppy()
+puppy.sound()  # Output: Puppy makes a cute sound
